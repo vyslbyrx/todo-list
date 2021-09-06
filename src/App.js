@@ -7,8 +7,8 @@ function App() {
     const INITIAL_DATA = [
         {id: 0,name: "Domates Al", completed: false},
         {id: 1,name: "30 sayfa kitap okumayı unutma", completed: true},
-        {id: 1,name: "Market alışverişi yapılacak", completed: true},
-        {id: 1,name: "6:30 da spor salonuna gidilecek...", completed: true}
+        {id: 2,name: "Market alışverişi yapılacak", completed: true},
+        {id: 3,name: "6:30 da spor salonuna gidilecek...", completed: true}
     ];
 
     const [list,setList] = useState(INITIAL_DATA);
