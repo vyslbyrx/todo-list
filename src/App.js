@@ -90,7 +90,7 @@ function App() {
 
        <div className="form-buttons">
            <button onClick={handleCompletedClear} className="todo-clear">
-               Tamamlanaları Temizle
+               Yapılanları Temizle
            </button>
            <button onClick={handleAllClear} className="todo-all-clear">
                Tüm Listeyi Temizle
