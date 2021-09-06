@@ -6,7 +6,9 @@ function App() {
 
     const INITIAL_DATA = [
         {id: 0,name: "Domates Al", completed: false},
-        {id: 1,name: "30 sayfa kitap okumayı unutma", completed: true}
+        {id: 1,name: "30 sayfa kitap okumayı unutma", completed: true},
+        {id: 1,name: "Market alışverişi yapılacak", completed: true},
+        {id: 1,name: "6:30 da spor salonuna gidilecek...", completed: true}
     ];
 
     const [list,setList] = useState(INITIAL_DATA);
@@ -23,7 +25,7 @@ function App() {
     };
     const handleItemAdd = () => {
         if(input === '') {
-            alert("Hacım lütfen bişiler yazar mısın? Bak içerisi bomboş..")
+            alert("Lütfen göre adı yazınız..")
         } else {
             setList([...list, {id: Date.now(),name: input,complete: false}]);
             setInput('');
@@ -47,7 +49,7 @@ function App() {
     };
     const handleItemAddItem = (item) => {
         if(inputItemData === '') {
-            alert("Reis bak ikidir aynı şeyi yapıyorsun şunun içini doldur.")
+            alert("Değişimi yapilacak görev kısmı boş bırakılamaz")
         } else {
             setList(list.map( listItem => listItem.id === item.id ? {...item, name: inputItemData} : listItem));
             setInputItemData('');
