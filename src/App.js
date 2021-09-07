@@ -14,7 +14,7 @@ function App() {
     const [list,setList] = useState(INITIAL_DATA);
     const [input,setInput] = useState('');
     const [edit,setEdit] = useState();
-    const [inputItemData,setInputItemData] = useState('')
+    const [inputItemData,setInputItemData] = useState('');
 
     const inputData = (item) => {
         if(item.target.value === ' ') {
@@ -25,7 +25,7 @@ function App() {
     };
     const handleItemAdd = () => {
         if(input === '') {
-            alert("Lütfen göre adı yazınız..")
+            alert("Please write the task name...")
         } else {
             setList([...list, {id: Date.now(),name: input,complete: false}]);
             setInput('');
@@ -39,6 +39,7 @@ function App() {
 
     const handleItemComplete = (item) => {
         setEdit(item.id);
+        setInputItemData(item.name)
     };
     const inputDataItem = (item) => {
         if(item.target.value === '') {
@@ -49,7 +50,7 @@ function App() {
     };
     const handleItemAddItem = (item) => {
         if(inputItemData === '') {
-            alert("Değişimi yapilacak görev kısmı boş bırakılamaz")
+            alert("The part of the task to be changed cannot be left blank.")
         } else {
             setList(list.map( listItem => listItem.id === item.id ? {...item, name: inputItemData} : listItem));
             setInputItemData('');
@@ -58,16 +59,15 @@ function App() {
     const handleCloseChangeItemName = () => {
         setEdit(-1);
         setInputItemData('');
-
     };
 
   return (
 
     <div className="App">
-        <h1 className="todo-list-title">TODO LIST - <small>Complete</small></h1>
+        <h1 className="todo-list-title">TODO LIST</h1>
         <div className="todo-add">
           <input value={input} onChange={inputData} type="text"/>
-          <button onClick={handleItemAdd} >Ekle</button>
+          <button onClick={handleItemAdd} >Add</button>
       </div>
         <div className="todo-list">
             {list.map( item => {
@@ -79,7 +79,7 @@ function App() {
                     </div>
                     {edit === item.id && <div className="todo-add-item">
                         <input value={inputItemData} onChange={inputDataItem} type="text"/>
-                        <button onClick={ () => handleItemAddItem(item)}>Değiştir</button>
+                        <button onClick={ () => handleItemAddItem(item)}>Change</button>
                         <span onClick={handleCloseChangeItemName} className="todo-add-item-close">
                             <AiOutlineClose />
                         </span>
@@ -90,10 +90,10 @@ function App() {
 
        <div className="form-buttons">
            <button onClick={handleCompletedClear} className="todo-clear">
-               Yapılanları Temizle
+              Clear Done
            </button>
            <button onClick={handleAllClear} className="todo-all-clear">
-               Tüm Listeyi Temizle
+               Clear All
            </button>
        </div>
     </div>
